@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="一周的感悟, yanshaoze">
+    <meta name="keywords" content="自动化, yanshaoze">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>一周的感悟 | yanshaoze</title>
+    <title>自动化 | yanshaoze</title>
     <link rel="icon" type="image/png" href="/">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -253,12 +253,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">一周的感悟</h1>
+                    <h1 class="description center-align post-title">自动化</h1>
                 </div>
             </div>
         </div>
@@ -374,12 +374,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%97%A5%E8%AE%B0/">
-                                <span class="chip bg-color">日记</span>
+                            <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">
+                                <span class="chip bg-color">自动化</span>
                             </a>
                         
-                            <a href="/tags/%E5%90%90%E6%A7%BD/">
-                                <span class="chip bg-color">吐槽</span>
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
                             </a>
                         
                     </div>
@@ -394,7 +394,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-09-10
+                    2021-09-11
                 </div>
                 
 
@@ -415,10 +415,29 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="第一点"><a href="#第一点" class="headerlink" title="第一点"></a>第一点</h3><p>这一周就测试了二期菜单功能，问题挺多，但是修复bug速度可以。</p>
-<h3 id="第二点"><a href="#第二点" class="headerlink" title="第二点"></a>第二点</h3><p>其他的测试工作在回归中遇到一堆重复的问题，就不能自测一下再合代码么，这边改bug速度就有点问题了。</p>
-<h3 id="第三点"><a href="#第三点" class="headerlink" title="第三点"></a>第三点</h3><p>这边的开发任务真的有这么重么，感觉开发很闲啊。</p>
-<h3 id="第四点"><a href="#第四点" class="headerlink" title="第四点"></a>第四点</h3><p>测试任务也越来越多了，不过也有测试同事在摸鱼，影响了进度，话说能在白天解决的工作为什么非要晚上加班解决，这个年纪不知道养生的重要性。</p>
+                <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在自动化框架testNG学习过程中,遇到错误提示<br><code>no tests were found</code><br>可能是没有具体指定哪个类去运行？<br>具体指定后，正常运行。</p>
+<h3 id="分组执行"><a href="#分组执行" class="headerlink" title="分组执行"></a>分组执行</h3><p>测试类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class TestNg3 &#123;</span><br><span class="line">    @Test(groups= &#123;&quot;group1&quot;&#125;)</span><br><span class="line">    public void testa_1()&#123;</span><br><span class="line">        Assert.assertEquals(1+1,2);</span><br><span class="line">    &#125;</span><br><span class="line">    @Test(groups= &#123;&quot;group2&quot;&#125;)</span><br><span class="line">    public void testa_2()&#123;</span><br><span class="line">        Assert.assertEquals(1+2,2);</span><br><span class="line">    &#125;</span><br><span class="line">    @Test(groups= &#123;&quot;group3&quot;&#125;)</span><br><span class="line">    public void testa_3()&#123;</span><br><span class="line">        Assert.assertEquals(1+3,4);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<p>xml文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;</span><br><span class="line">&lt;suite name=&quot;Suite-1&quot;&gt;</span><br><span class="line">    &lt;test verbose=&quot;2&quot; preserve-order=&quot;true&quot; name=&quot;D:/kaifa/idea/projects/ceshikaifa/day03_testng2&quot;&gt;</span><br><span class="line">        &lt;groups&gt;</span><br><span class="line">            &lt;run&gt;</span><br><span class="line">                &lt;include name=&quot;group1&quot; /&gt;</span><br><span class="line">            &lt;/run&gt;</span><br><span class="line">        &lt;/groups&gt;</span><br><span class="line">        &lt;classes &gt;</span><br><span class="line">            &lt;class name=&quot;com.yfd.testng.TestNg3&quot; /&gt;</span><br><span class="line">        &lt;/classes&gt;</span><br><span class="line">    &lt;/test&gt;</span><br><span class="line">&lt;/suite&gt; </span><br></pre></td></tr></table></figure>
+<h3 id="TestNG的基本注解"><a href="#TestNG的基本注解" class="headerlink" title="TestNG的基本注解"></a>TestNG的基本注解</h3><p>@Test：最基本的注解，用来把方法标记为测试的一部分<br>@BeforeSuite：对于套件测试，在此套件中的所有测试执行之前运行，仅运行一次<br>@AfterSuite：对于套件测试，在此套件中的所有测试执行之后运行，仅运行一次<br>@BeforeTest：对于套件测试，在属于<code>&lt;test&gt;</code>标签内的所有类的测试方法执行之前运行<br>@AfterTest：对于套件测试，在属于<code>&lt;test&gt;</code>标签内的所有类的测试方法都已执行完之后运行<br>@BeforeClass：在调用当前类之前运行<br>@AfterClass：在调用当前类之后运行<br>@BeforeMethod：在每个测试方法执行之前都会运行<br>@AfterMethod：在每个测试方法执行之后都会运行<br>@BeforeGroups：在调用属于该组的第一个测试方法之前运行<br>@AfterGroups：在调用属于该组的最后一个测试方法执行之后运行 </p>
+<h3 id="异常测试"><a href="#异常测试" class="headerlink" title="异常测试"></a>异常测试</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class ExceptionTest &#123;</span><br><span class="line">    //这是一个失败的异常测试</span><br><span class="line">    @Test(expectedExceptions = IllegalArgumentException.class,</span><br><span class="line">    expectedExceptionsMessageRegExp=&quot;NullPoint&quot;)</span><br><span class="line">   public void testException()&#123;</span><br><span class="line">        throw new IllegalArgumentException(&quot;NullPoint&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;    </span><br></pre></td></tr></table></figure>
+<h3 id="参数化"><a href="#参数化" class="headerlink" title="参数化"></a>参数化</h3><p>1.xml方式<br>测试类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import org.testng.annotations.Parameters;</span><br><span class="line">import org.testng.annotations.Test;</span><br><span class="line"></span><br><span class="line">public class TestNg3_para &#123;</span><br><span class="line">    @Test</span><br><span class="line">    @Parameters(&#123;&quot;a&quot;,&quot;b&quot;&#125;)</span><br><span class="line">    public void testParameters(int a,int b)&#123;</span><br><span class="line">        int c=a+b;</span><br><span class="line">        Assert.assertEquals(c,3);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>xml</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;</span><br><span class="line">&lt;suite name=&quot;Suite-1&quot;&gt;</span><br><span class="line">    &lt;test verbose=&quot;2&quot; preserve-order=&quot;true&quot; name=&quot;D:/kaifa/idea/projects/ceshikaifa/day03_testng2&quot;&gt;</span><br><span class="line">        &lt;parameter name=&quot;a&quot; value=&quot;1&quot;/&gt;</span><br><span class="line">        &lt;parameter name=&quot;b&quot; value=&quot;2&quot;/&gt;</span><br><span class="line">        &lt;classes &gt;</span><br><span class="line">            &lt;class name=&quot;com.yfd.testng.TestNg3_para&quot; /&gt;</span><br><span class="line">        &lt;/classes&gt;</span><br><span class="line">    &lt;/test&gt;</span><br><span class="line">&lt;/suite&gt;</span><br></pre></td></tr></table></figure>
+<p>2.使用@DataProvider注解</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import org.testng.Assert;</span><br><span class="line">import org.testng.annotations.DataProvider;</span><br><span class="line">import org.testng.annotations.Test;</span><br><span class="line"></span><br><span class="line">public class testNg4_para2 &#123;</span><br><span class="line">    @DataProvider(name=&quot;test_p&quot;)</span><br><span class="line">    public Object[][] User()&#123;</span><br><span class="line">        return new Object[][]&#123;</span><br><span class="line">                &#123;1,1&#125;,&#123;2,2&#125;,&#123;3,3&#125;,&#123;4,4&#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    @Test(dataProvider=&quot;test_p&quot;)</span><br><span class="line">    public void test_p(int a,int b)&#123;</span><br><span class="line">        Assert.assertEquals(a,b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><p>代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import org.testng.Assert;</span><br><span class="line">import org.testng.annotations.Test;</span><br><span class="line"></span><br><span class="line">public class testNg_pool &#123;</span><br><span class="line">    @Test(threadPoolSize = 3,invocationCount = 6,timeOut = 1000)</span><br><span class="line">    public void test_pool()&#123;</span><br><span class="line">        Assert.assertEquals(1,1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="忽略和依赖"><a href="#忽略和依赖" class="headerlink" title="忽略和依赖"></a>忽略和依赖</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import org.testng.Assert;</span><br><span class="line">import org.testng.annotations.Test;</span><br><span class="line"></span><br><span class="line">public class testNg_ignore &#123;</span><br><span class="line">    @Test(enabled = false)</span><br><span class="line">    public void testa_1()&#123;</span><br><span class="line">        Assert.assertEquals(1+1,2);</span><br><span class="line">    &#125;</span><br><span class="line">    @Test(dependsOnMethods = &#123;&quot;testa_3&quot;&#125;)</span><br><span class="line">    public void testa_2()&#123;</span><br><span class="line">        Assert.assertEquals(1+2,2);</span><br><span class="line">    &#125;</span><br><span class="line">    @Test</span><br><span class="line">    public void testa_3()&#123;</span><br><span class="line">        Assert.assertEquals(1+3,4);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="测试报告"><a href="#测试报告" class="headerlink" title="测试报告"></a>测试报告</h3><p>依赖jar包<br>guice.jar<br>reportng.jar<br>testng.jar<br>velocity.jar</p>
+<p>xml</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;suite name=&quot;test&quot; parallel=&quot;true&quot;&gt;</span><br><span class="line">    &lt;test name=&quot;test&quot; preserver-order=&quot;true&quot;&gt;</span><br><span class="line">        &lt;classes&gt;</span><br><span class="line">            &lt;class name=&quot;com.yfd.testng.TestNg2&quot; /&gt;</span><br><span class="line">        &lt;/classes&gt;</span><br><span class="line">        &lt;listeners&gt;</span><br><span class="line">            &lt;listener class-name=&quot;org.uncommons.reportng.HTMLReporter&quot; /&gt;</span><br><span class="line">            &lt;listener class-name=&quot;org.uncommons.reportng.JUnitXMLReporter&quot; /&gt;</span><br><span class="line">        &lt;/listeners&gt;</span><br><span class="line">    &lt;/test&gt;</span><br><span class="line">&lt;/suite&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="代码覆盖率"><a href="#代码覆盖率" class="headerlink" title="代码覆盖率"></a>代码覆盖率</h3><p>引用大佬的方法</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://summer2zz.blog.csdn.net/article/details/102887144">https://summer2zz.blog.csdn.net/article/details/102887144</a></p>
+</blockquote>
 
                 
             </div>
@@ -445,7 +464,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://github.com/yanshaoze/yanshaoze.github.io.git/2021/09/10/20210910/">https://github.com/yanshaoze/yanshaoze.github.io.git/2021/09/10/20210910/</a>
+                    <a href="https://github.com/yanshaoze/yanshaoze.github.io.git/2021/09/11/20210911/">https://github.com/yanshaoze/yanshaoze.github.io.git/2021/09/11/20210911/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -483,12 +502,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%97%A5%E8%AE%B0/">
-                                    <span class="chip bg-color">日记</span>
+                                <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">
+                                    <span class="chip bg-color">自动化</span>
                                 </a>
                             
-                                <a href="/tags/%E5%90%90%E6%A7%BD/">
-                                    <span class="chip bg-color">吐槽</span>
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
                                 </a>
                             
                         </div>
@@ -531,9 +550,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/09/11/20210911/">
                     <div class="card-image">
@@ -551,9 +571,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-11
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-11
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -562,6 +582,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -584,13 +605,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/09/09/20210909/">
+                <a href="/2021/09/10/20210910/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="matery">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="一周的感悟">
                         
-                        <span class="card-title">matery</span>
+                        <span class="card-title">一周的感悟</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -601,7 +622,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-10
                             </span>
                         <span class="publish-author">
                             
@@ -610,6 +631,18 @@
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%97%A5%E8%AE%B0/">
+                        <span class="chip bg-color">日记</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%90%90%E6%A7%BD/">
+                        <span class="chip bg-color">吐槽</span>
+                    </a>
+                    
                 </div>
                 
             </div>
