@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="公司聚餐, yanshaoze">
+    <meta name="keywords" content="接口自动化之forest, yanshaoze">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>公司聚餐 | yanshaoze</title>
+    <title>接口自动化之forest | yanshaoze</title>
     <link rel="icon" type="image/png" href="/">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -253,12 +253,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">公司聚餐</h1>
+                    <h1 class="description center-align post-title">接口自动化之forest</h1>
                 </div>
             </div>
         </div>
@@ -374,12 +374,20 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%90%90%E6%A7%BD/">
-                                <span class="chip bg-color">吐槽</span>
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
                             </a>
                         
-                            <a href="/tags/%E7%BE%8E%E9%A3%9F/">
-                                <span class="chip bg-color">美食</span>
+                            <a href="/tags/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96/">
+                                <span class="chip bg-color">接口自动化</span>
+                            </a>
+                        
+                            <a href="/tags/forest/">
+                                <span class="chip bg-color">forest</span>
+                            </a>
+                        
+                            <a href="/tags/springboot/">
+                                <span class="chip bg-color">springboot</span>
                             </a>
                         
                     </div>
@@ -394,7 +402,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-09-11
+                    2021-09-18
                 </div>
                 
 
@@ -415,7 +423,22 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>建议不要去四海一家去吃自助餐，不新鲜，口味也不好</p>
+                <p>利用forest实现接口自动化测试有三种方式。有相关文档<code>http://forest.dtflyx.com/</code></p>
+<h3 id="普通项目"><a href="#普通项目" class="headerlink" title="普通项目"></a>普通项目</h3><p>第一种是普通的项目，不用spring框架，首先建一个接口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import com.dtflys.forest.annotation.Body;</span><br><span class="line">import com.dtflys.forest.annotation.Post;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public interface MyClient &#123;</span><br><span class="line">    @Post(</span><br><span class="line">            url = &quot;http://localhost:8080/LexianMall/user/remLogin.do&quot;</span><br><span class="line"></span><br><span class="line">    )</span><br><span class="line">    String helloForest(@Body(&quot;phone&quot;) String phone,@Body(&quot;passwd&quot;) String passwd);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>然后创建配置对象，通过对象调接口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import com.dtflys.forest.config.ForestConfiguration;</span><br><span class="line">import org.testng.annotations.Test;</span><br><span class="line"></span><br><span class="line">public class ForestTest1 &#123;</span><br><span class="line">    @Test</span><br><span class="line">    public void test1()&#123;</span><br><span class="line">    ForestConfiguration configuration = ForestConfiguration.configuration();</span><br><span class="line">    MyClient myClient = configuration.createInstance(MyClient.class);</span><br><span class="line">    String result = myClient.helloForest(&quot;13800138000&quot;,&quot;123456&quot;);</span><br><span class="line">    System.out.println(result);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第二种配合spring框架进行使用，需要xml配置文件结合。</p>
+<h3 id="springboot项目"><a href="#springboot项目" class="headerlink" title="springboot项目"></a>springboot项目</h3><p>第三种方法是结合springboot进行使用。<br>首先pom依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;com.dtflys.forest&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;forest-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.5.2-BETA2&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;junit&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;junit&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;4.12&lt;/version&gt;</span><br><span class="line">&lt;!--            &lt;scope&gt;test&lt;/scope&gt;--&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;fastjson&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.2.75&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">&lt;!--            &lt;scope&gt;test&lt;/scope&gt;--&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>可以配置yaml文件，把一些默认配置先弄好，接着建一个接口。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import com.dtflys.forest.annotation.Body;</span><br><span class="line">import com.dtflys.forest.annotation.DataVariable;</span><br><span class="line">import com.dtflys.forest.annotation.Get;</span><br><span class="line">import com.dtflys.forest.annotation.Post;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public interface MyClient &#123;</span><br><span class="line">    @Get(url=&quot;$&#123;url&#125;&quot;)</span><br><span class="line">    String sendGet(@DataVariable(&quot;url&quot;) String url);</span><br><span class="line"></span><br><span class="line">    @Post(url=&quot;$&#123;url&#125;&quot;</span><br><span class="line">//          headers = &#123;&quot;Accept:text/plain&quot;&#125;</span><br><span class="line">//            sslProtocol = &quot;sslType&quot;                    //协议类型</span><br><span class="line">          )</span><br><span class="line">    String testBody(@DataVariable(&quot;url&quot;) String url, @Body(&quot;phone&quot;) String phone,@Body(&quot;passwd&quot;) String passwd);</span><br><span class="line">&#125;</span><br><span class="line">                                                        //JSONBody 可以json类</span><br></pre></td></tr></table></figure>
+<p>然后写测试类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">import org.junit.jupiter.api.Test;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.boot.test.context.SpringBootTest;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@SpringBootTest</span><br><span class="line">public class TestForest &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    MyClient myClient;</span><br><span class="line">    @Test</span><br><span class="line">    public void test_get()&#123;</span><br><span class="line">        String url=&quot;http://www.baidu.com&quot;;</span><br><span class="line">        String response=myClient.sendGet(url);</span><br><span class="line">        System.out.println(response);</span><br><span class="line">    &#125;</span><br><span class="line">    @Test</span><br><span class="line">    public void test_post()&#123;</span><br><span class="line">        String url=&quot;http://localhost:8080/LexianMall/user/remLogin.do&quot;;</span><br><span class="line">        String phone=&quot;13800138000&quot;;</span><br><span class="line">        String passwd=&quot;123456&quot;;</span><br><span class="line">        String response=myClient.testBody(url,phone,passwd);</span><br><span class="line">        System.out.println(response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>直接运行测试类即可。</p>
+<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><p>1.文件类型自动改变了，导致编码格式不一致，<code>java.nio.charset.MalformedInputException</code>错误，需要setting中设置，如果不成功，直接加入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;properties&gt;</span><br><span class="line">        &lt;java.version&gt;1.8&lt;/java.version&gt;</span><br><span class="line">        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br><span class="line">        &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;</span><br><span class="line">        &lt;maven.compiler.encoding&gt;UTF-8&lt;/maven.compiler.encoding&gt;</span><br><span class="line">&lt;/properties&gt;</span><br></pre></td></tr></table></figure>
+<p>2.testng似乎不兼容springboot，使用testng的Test注解的测试类，会出现空指针错误，发现不了该测试类，暂无解决方法，只能用高版本的junit，或许后面会找到解决办法。</p>
 
                 
             </div>
@@ -442,7 +465,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://github.com/yanshaoze/yanshaoze.github.io.git/2021/09/11/eat/">https://github.com/yanshaoze/yanshaoze.github.io.git/2021/09/11/eat/</a>
+                    <a href="https://github.com/yanshaoze/yanshaoze.github.io.git/2021/09/18/20210918/">https://github.com/yanshaoze/yanshaoze.github.io.git/2021/09/18/20210918/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -480,12 +503,20 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%90%90%E6%A7%BD/">
-                                    <span class="chip bg-color">吐槽</span>
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
                                 </a>
                             
-                                <a href="/tags/%E7%BE%8E%E9%A3%9F/">
-                                    <span class="chip bg-color">美食</span>
+                                <a href="/tags/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96/">
+                                    <span class="chip bg-color">接口自动化</span>
+                                </a>
+                            
+                                <a href="/tags/forest/">
+                                    <span class="chip bg-color">forest</span>
+                                </a>
+                            
+                                <a href="/tags/springboot/">
+                                    <span class="chip bg-color">springboot</span>
                                 </a>
                             
                         </div>
@@ -528,17 +559,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/09/15/20210915/">
+                <a href="/2021/09/18/20210918/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="接口测试">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="接口自动化之forest">
                         
-                        <span class="card-title">接口测试</span>
+                        <span class="card-title">接口自动化之forest</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -548,9 +580,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -559,6 +591,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -566,8 +599,16 @@
                         <span class="chip bg-color">java</span>
                     </a>
                     
-                    <a href="/tags/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/">
-                        <span class="chip bg-color">接口测试</span>
+                    <a href="/tags/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96/">
+                        <span class="chip bg-color">接口自动化</span>
+                    </a>
+                    
+                    <a href="/tags/forest/">
+                        <span class="chip bg-color">forest</span>
+                    </a>
+                    
+                    <a href="/tags/springboot/">
+                        <span class="chip bg-color">springboot</span>
                     </a>
                     
                 </div>
@@ -581,13 +622,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/09/11/20210911/">
+                <a href="/2021/09/17/20210917/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="自动化">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="拓展">
                         
-                        <span class="card-title">自动化</span>
+                        <span class="card-title">拓展</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -598,7 +639,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-17
                             </span>
                         <span class="publish-author">
                             
@@ -615,8 +656,8 @@
                         <span class="chip bg-color">java</span>
                     </a>
                     
-                    <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">
-                        <span class="chip bg-color">自动化</span>
+                    <a href="/tags/forest/">
+                        <span class="chip bg-color">forest</span>
                     </a>
                     
                 </div>
