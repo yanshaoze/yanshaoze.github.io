@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="公司聚餐, yanshaoze">
+    <meta name="keywords" content="yanshaoze">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>公司聚餐 | yanshaoze</title>
+    <title>yanshaoze</title>
     <link rel="icon" type="image/png" href="/">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -253,12 +253,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">公司聚餐</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -374,12 +374,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%90%90%E6%A7%BD/">
-                                <span class="chip bg-color">吐槽</span>
-                            </a>
-                        
-                            <a href="/tags/%E7%BE%8E%E9%A3%9F/">
-                                <span class="chip bg-color">美食</span>
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
                             </a>
                         
                     </div>
@@ -394,7 +390,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-09-11
+                    2021-10-16
                 </div>
                 
 
@@ -415,8 +411,13 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>建议不要去四海一家去吃自助餐，不新鲜，口味也不好</p>
-
+                <h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p>1.获取数据<br>2.数据处理<br>3.特征工程<br>4.训练获得模型<br>5.评估</p>
+<h3 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h3><h1 id="数据处理的方法"><a href="#数据处理的方法" class="headerlink" title="数据处理的方法"></a>数据处理的方法</h1><p>1.特征提取<br>sklearn.feature_extraction<br>2.字典特征提取<br>DictVectorizer(sparse=True,…)<br>3.文本特征提取<br>TfidfVectorizer<br>如果是中文文章，需要使用jieba中cut方法进行词语剪切，然后再进行特征提取</p>
+<h1 id="无量纲化"><a href="#无量纲化" class="headerlink" title="无量纲化"></a>无量纲化</h1><p>标准化</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.preprocessing import StandardScaler</span><br><span class="line">StandardScaler().fit_transform(data) </span><br></pre></td></tr></table></figure>
+<h1 id="pca降维"><a href="#pca降维" class="headerlink" title="pca降维"></a>pca降维</h1><p>是一种无监督的降维方法，当特征选择完成后，可能由于特征矩阵过大，导致计算量大，训练时间长，因此降低特征矩阵维度</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.decomposition import PCA</span><br><span class="line"></span><br><span class="line">#主成分分析法，返回降维后的数据</span><br><span class="line">#参数n_components为主成分数目</span><br><span class="line">PCA(n_components=2).fit_transform(data)</span><br></pre></td></tr></table></figure>
+<h3 id="训练获得模型"><a href="#训练获得模型" class="headerlink" title="训练获得模型"></a>训练获得模型</h3><h1 id="knn算法"><a href="#knn算法" class="headerlink" title="knn算法"></a>knn算法</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.datasets import load_iris</span><br><span class="line">from sklearn.model_selection import train_test_split, GridSearchCV</span><br><span class="line">from sklearn.preprocessing import StandardScaler</span><br><span class="line">from sklearn.neighbors import KNeighborsClassifier</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def knn_iris1():</span><br><span class="line">    &quot;&quot;&quot;knn算法&quot;&quot;&quot;</span><br><span class="line">    #获取数据</span><br><span class="line">    iris=load_iris()</span><br><span class="line">    #划分数据集</span><br><span class="line">    x_train,x_test,y_train,y_test=train_test_split(iris.data,iris.target,random_state=3)</span><br><span class="line">    #特征工程</span><br><span class="line">    #标准化</span><br><span class="line">    transform=StandardScaler()</span><br><span class="line">    x_train=transform.fit_transform(x_train)</span><br><span class="line">    x_test=transform.fit_transform(x_test)</span><br><span class="line">    #knn算法预估器</span><br><span class="line">    estimator=KNeighborsClassifier(n_neighbors=3)</span><br><span class="line">    estimator.fit(x_train,y_train)</span><br><span class="line">    #模型评估</span><br><span class="line">    #1.直接对比真实值和预测值</span><br><span class="line">    y_predict=estimator.predict(x_test)</span><br><span class="line">    print(y_predict)</span><br><span class="line">    print(&quot;对比&quot;,y_test==y_predict)</span><br><span class="line">    #2.计算准确率</span><br><span class="line">    score=estimator.score(x_test,y_test)</span><br><span class="line">    print(score)</span><br><span class="line">def knn_iris2():</span><br><span class="line">    &quot;&quot;&quot;knn算法-加入调优&quot;&quot;&quot;</span><br><span class="line">    #获取数据</span><br><span class="line">    iris=load_iris()</span><br><span class="line">    #划分数据集</span><br><span class="line">    x_train,x_test,y_train,y_test=train_test_split(iris.data,iris.target,random_state=3)</span><br><span class="line">    #特征工程</span><br><span class="line">    #标准化</span><br><span class="line">    transform=StandardScaler()</span><br><span class="line">    x_train=transform.fit_transform(x_train)</span><br><span class="line">    x_test=transform.fit_transform(x_test)</span><br><span class="line">    #knn算法预估器</span><br><span class="line">    estimator=KNeighborsClassifier()</span><br><span class="line">    #加入网络搜索和交叉验证</span><br><span class="line">    param_dict=&#123;&quot;n_neighbors&quot;:[1,3,5,7,9,11]&#125;</span><br><span class="line">    estimator=GridSearchCV(estimator,param_grid=param_dict,cv=8)</span><br><span class="line">    estimator.fit(x_train,y_train)</span><br><span class="line">    #模型评估</span><br><span class="line">    #1.直接对比真实值和预测值</span><br><span class="line">    y_predict=estimator.predict(x_test)</span><br><span class="line">    print(y_predict)</span><br><span class="line">    print(&quot;对比&quot;,y_test==y_predict)</span><br><span class="line">    #2.计算准确率</span><br><span class="line">    score=estimator.score(x_test,y_test)</span><br><span class="line">    print(score)</span><br><span class="line">    #最佳参数</span><br><span class="line">    print(&quot;最佳参数&quot;,estimator.best_params_)</span><br><span class="line">    # 最佳结果</span><br><span class="line">    print(&quot;最佳结果&quot;, estimator.best_score_)</span><br><span class="line">    # 最佳预估器</span><br><span class="line">    print(&quot;最佳预估器&quot;, estimator.best_estimator_)</span><br><span class="line">    # 交叉验证结果</span><br><span class="line">    print(&quot;交叉验证结果&quot;, estimator.cv_results_)</span><br><span class="line">if __name__==&quot;__main__&quot;:</span><br><span class="line">    knn_iris1()</span><br><span class="line">    knn_iris2()</span><br></pre></td></tr></table></figure>
                 
             </div>
             <hr/>
@@ -442,7 +443,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://github.com/yanshaoze/yanshaoze.github.io.git/2021/09/11/eat/">https://github.com/yanshaoze/yanshaoze.github.io.git/2021/09/11/eat/</a>
+                    <a href="https://github.com/yanshaoze/yanshaoze.github.io.git/2021/10/16/20211016/">https://github.com/yanshaoze/yanshaoze.github.io.git/2021/10/16/20211016/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -480,12 +481,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%90%90%E6%A7%BD/">
-                                    <span class="chip bg-color">吐槽</span>
-                                </a>
-                            
-                                <a href="/tags/%E7%BE%8E%E9%A3%9F/">
-                                    <span class="chip bg-color">美食</span>
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
                                 </a>
                             
                         </div>
@@ -528,17 +525,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/09/15/20210915/">
+                <a href="/2021/10/16/20211016/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="接口测试">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">接口测试</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -548,9 +546,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -559,15 +557,12 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/">
-                        <span class="chip bg-color">接口测试</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
@@ -581,13 +576,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/09/11/20210911/">
+                <a href="/2021/10/06/20211006/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="自动化">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">自动化</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -598,7 +593,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-06
                             </span>
                         <span class="publish-author">
                             
@@ -607,18 +602,6 @@
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">
-                        <span class="chip bg-color">自动化</span>
-                    </a>
-                    
                 </div>
                 
             </div>
