@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="自动化之httpclient, yanshaoze">
+    <meta name="keywords" content="渗透测试, yanshaoze">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>自动化之httpclient | yanshaoze</title>
+    <title>渗透测试 | yanshaoze</title>
     <link rel="icon" type="image/png" href="/">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -253,12 +253,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">自动化之httpclient</h1>
+                    <h1 class="description center-align post-title">渗透测试</h1>
                 </div>
             </div>
         </div>
@@ -374,12 +374,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/java/">
-                                <span class="chip bg-color">java</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96/">
-                                <span class="chip bg-color">接口自动化</span>
+                            <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">
+                                <span class="chip bg-color">渗透测试</span>
                             </a>
                         
                     </div>
@@ -394,7 +390,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-09-16
+                    2022-09-07
                 </div>
                 
 
@@ -415,9 +411,39 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>在进行get或post接口请求时，我们可以自定义方法封装起来，然后进行调用。当然，也有第三方jar包封装好的方法，HttpClient就是其中之一。内容如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">import org.apache.http.HttpEntity;</span><br><span class="line">import org.apache.http.HttpStatus;</span><br><span class="line">import org.apache.http.client.config.RequestConfig;</span><br><span class="line">import org.apache.http.client.methods.CloseableHttpResponse;</span><br><span class="line">import org.apache.http.client.methods.HttpGet;</span><br><span class="line">import org.apache.http.client.methods.HttpPost;</span><br><span class="line">import org.apache.http.entity.StringEntity;</span><br><span class="line">import org.apache.http.impl.client.CloseableHttpClient;</span><br><span class="line">import org.apache.http.impl.client.HttpClients;</span><br><span class="line">import org.apache.http.util.EntityUtils;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class TestHttpClient &#123;</span><br><span class="line"></span><br><span class="line">    public String sendGet(String getUrl)&#123;</span><br><span class="line">        String result=&quot;&quot;;</span><br><span class="line">        CloseableHttpClient hc= HttpClients.createDefault();</span><br><span class="line">        HttpGet httpGet=new HttpGet(getUrl);</span><br><span class="line">        RequestConfig config=RequestConfig.custom().setSocketTimeout(20000).setConnectTimeout(2000).build();</span><br><span class="line">        httpGet.setConfig(config);</span><br><span class="line">        try &#123;</span><br><span class="line">            CloseableHttpResponse response=hc.execute(httpGet);</span><br><span class="line">            if(response.getStatusLine().getStatusCode()== HttpStatus.SC_OK)&#123;</span><br><span class="line">                HttpEntity entity=response.getEntity();</span><br><span class="line">                result= EntityUtils.toString(entity,&quot;UTF-8&quot;);</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                System.out.println(&quot;本次请求处理失败&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        httpGet.releaseConnection();</span><br><span class="line">        return result;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String sendPost(String postUrl,String data)&#123;</span><br><span class="line">        String result=&quot;&quot;;</span><br><span class="line">        CloseableHttpClient hc= HttpClients.createDefault();</span><br><span class="line">        HttpPost httpPost=new HttpPost(postUrl);</span><br><span class="line">        RequestConfig config=RequestConfig.custom().setSocketTimeout(20000).setConnectTimeout(2000).build();</span><br><span class="line">        httpPost.setConfig(config);</span><br><span class="line">        try &#123;</span><br><span class="line">            StringEntity entity=new StringEntity(data,&quot;UTF-8&quot;);</span><br><span class="line">            entity.setContentEncoding(&quot;UTF-8&quot;);</span><br><span class="line">            entity.setContentType(&quot;application/x-ww-form-urlencoded&quot;);</span><br><span class="line">            httpPost.setEntity(entity);</span><br><span class="line">            CloseableHttpResponse response=hc.execute(httpPost);</span><br><span class="line">            if(response.getStatusLine().getStatusCode()== HttpStatus.SC_OK)&#123;</span><br><span class="line">                result= EntityUtils.toString(response.getEntity(),&quot;UTF-8&quot;);</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                System.out.println(&quot;本次请求处理失败&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        httpPost.releaseConnection();</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>自定义和第三方包相比，各有优劣，可以按照自己的想法去用。</p>
+                <h1 id="owvasp-top10"><a href="#owvasp-top10" class="headerlink" title="owvasp top10"></a>owvasp top10</h1><h2 id="一、注入"><a href="#一、注入" class="headerlink" title="一、注入"></a>一、注入</h2><p>注入攻击是指攻击者在输入数据时向解释器提交一些非法或者未授权的命令来欺骗解释权，使解释器错误的执行了这些代码，向攻击者返回一些本不应该被看见的数据。<br>当用户发送不可信的数据到解释器时候，就可以出现注入漏洞，解释器可能会将用户发送的恶意数据视为指令或数据库查询，使得用户在没有权限的情况下访问数据，甚至导致用户完全控制服务器。<br>最常见的注入：</p>
+<h3 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h3><p>指应用程序对用户输入的据的合法性没有进行判断，前端传入后端的参数使攻击者可控的，并且爸数中带有数据库查询，攻击者可以通过构浩不同的5QL语句来实现对数据库的任意操作。<br>SQL注入洞洞产生需要以下两个条件<br>参数是用户可控的：前端传给后端的数内容是用户可以控制的变数带入数据库查询<br>传入的热数可以带入数据库中查询<br>如果满足以上两个条件，那么，攻击者就可以在前端方面中通过SQL语句拼接，将自己相要查询的sQL语句拼接到合法参数后面，这祥新可以通过构造非法的5QL语句来对数据库进行增收查等换作。<br>SQL注入的防御方法<br>过滤诡险字符：现在很多cMs都采用过流危险字符的方法，比加使用正则依达式匹配un1on、sleep、5 elect等关键字，如果匹配到，那么就送出程序。（也可以使PHP中ysg1 real_escape_str1ng()图数过波一些特孩字符）：<br>采用PD0所编泽技术：在使用PD0技术访问据库时，再正的real prepared statenents默认是不使用的，<br>因此使用”setAttribute(PDO:ATTR_EMULATE_PREPARES,false);“这一句来禁掉模拟预处理语句，使用直正的预编译。</p>
+<h3 id="os命令注入"><a href="#os命令注入" class="headerlink" title="os命令注入"></a>os命令注入</h3><p>os指令执行是为了通过网路接口在web服务器执行os命令的一种技术。如果应用程序使用外部输入的字符串或受外影响的字特中组装轮合，并且没有经过正确的过滤，就可能导致os命令的注入攻击<br>os注入的原理:<br>就是程序开发者对输入的数抵没有讲行在何过滤，攻击者在前端可以在正确输入的命全后拼接自己想执行的命令。<br>如果没有对&amp;、&amp;&amp;、|、||等并接字行进行讨速.那么就会造成命令注人<br>这样攻击者就可以使中拼接的命令来查看各种信息，甚至执行shell<br>os注入的防御方法：<br>过滤&amp;、&amp;&amp;、|、||等字符，最好使用白名单过滤方法<br>不止在前端进行验证，达可以在服务端再进行一次检证<br>·要用最小权限去运行程序，不必给予程序多余的权限<br>·在命命执行带误时不要显示更多的细节，这样攻击者就不能通过带误提示得到更多的信息</p>
+<h2 id="二、失效的身份认证"><a href="#二、失效的身份认证" class="headerlink" title="二、失效的身份认证"></a>二、失效的身份认证</h2><h3 id="1、身份认证和会话管理的定义"><a href="#1、身份认证和会话管理的定义" class="headerlink" title="1、身份认证和会话管理的定义"></a>1、身份认证和会话管理的定义</h3><p>身份认证<br>身份认证最常用于系统登录，形式一般为用户名加密码的登录方式，在安全性要求较高的情况下，还有验证码、客户端证书、Uky等。</p>
+<p>会话管理<br>HTTP利用会话机制来实现身份认证<br>，HTP身份认证的结果往往是获得一个合牌并放在cookier中，之后的身份识别只需读取授权合牌，如果授权合牌认证成功，那么就无需再次进行登录认证。<br>只会在第一次登录时产生令牌，并通过cookie的形式发送给客户端，之后客户端再与服务器交互发信息，就不会进行再走登录处理过程了，服务器通过校验客户端请求cookie携带的合牌来识别是否登录过</p>
+<h3 id="2、什么是失效的身份认证和会话管理"><a href="#2、什么是失效的身份认证和会话管理" class="headerlink" title="2、什么是失效的身份认证和会话管理"></a>2、什么是失效的身份认证和会话管理</h3><p>用户身份认证和会话管理是一个应用程序中最关键的过程，有缺陷的设计会严重破坏这个过程。在开发Web应用程序时，开发人员往往只关注<br>web应用程序所需的功能。由于这个原因，开发人员通常会建立自定义的认证和会话管理方案。但要正确实现这些方案却很难，结果这些自定义的方案往往在如下方面存在漏洞：<br>退出、密码管理、超时、记住我、秘密问题、帐户更新等等。<br>因此攻击者就可以通过破坏密码、密钥、会话令牌<br>或攻击其他的漏洞去冒充其他用户的身份，<br>这种身份的冒充可能是暂时的，也可能是永久的。</p>
+<h3 id="3、存在失效身份认证和会话管理的漏洞例子"><a href="#3、存在失效身份认证和会话管理的漏洞例子" class="headerlink" title="3、存在失效身份认证和会话管理的漏洞例子"></a>3、存在失效身份认证和会话管理的漏洞例子</h3><p>用户更改密码之前不验证用户，而是依靠会话的IP地址<br>没有会话超时限制<br>用户忘记密码后，密码找回功能太过简单</p>
+<h3 id="4、防御失效身份认证和会话管理的方法"><a href="#4、防御失效身份认证和会话管理的方法" class="headerlink" title="4、防御失效身份认证和会话管理的方法"></a>4、防御失效身份认证和会话管理的方法</h3><p>1、区分公共区域和受限区域<br>公共区域允许匿名用户访问<br>受限区域只允许指定用户访问<br>2、支持密码的有效期<br>向用户提供可以再一段时间后修改密码的功能<br>3、能够禁用用户<br>在收到攻击后可以禁用账户来避免遭受进一步的损失<br>4、要求用户使用强密码<br>5、不要再网络上以纯文本凡是传输用户名和密码<br>使用SSL对数据进行加密，也可以对cookie进行加密</p>
+<h2 id="三、敏感数据泄露"><a href="#三、敏感数据泄露" class="headerlink" title="三、敏感数据泄露"></a>三、敏感数据泄露</h2><h3 id="1、敏感数据泄露介绍"><a href="#1、敏感数据泄露介绍" class="headerlink" title="1、敏感数据泄露介绍"></a>1、敏感数据泄露介绍</h3><p>近年来，敏感数据池露已经成为了最常见、最具影响力的攻击，不久前就爆出过Facebooki泄露了用户的大量信息，以及12306也多次泄露用户的信息。现在信息泄露已经成为了owasp top10中排名第三的漏洞，可想而知敏感信息池雾现在已经成为十分严重的问题。</p>
+<h3 id="2、敏感信息泄露原理"><a href="#2、敏感信息泄露原理" class="headerlink" title="2、敏感信息泄露原理"></a>2、敏感信息泄露原理</h3><p>攻击者不是直接攻击密码，而是在传输过程中或从客户端窃取密钥、发起中间人攻击，或从服务器端窃取明文数据，还有可能由于管理员的安全性不高，使弱密码，被攻击者暴力破解，进入到数据库拿到敏感信息。</p>
+<h3 id="3、防御敏感信息泄露的方法"><a href="#3、防御敏感信息泄露的方法" class="headerlink" title="3、防御敏感信息泄露的方法"></a>3、防御敏感信息泄露的方法</h3><p>对系统处理、存储或传输的数据分类，并根据分类进行访问控制</p>
+<p>对重要数据进行加密存放，数据在传输过程中使用密文进行传输<br>及时清理没有用的敏感数据，只能使用指定用户访问敏感数据</p>
+<h2 id="四、xml外部实体（xxe）"><a href="#四、xml外部实体（xxe）" class="headerlink" title="四、xml外部实体（xxe）"></a>四、xml外部实体（xxe）</h2><h3 id="1、XXE介绍"><a href="#1、XXE介绍" class="headerlink" title="1、XXE介绍"></a>1、XXE介绍</h3><p>XXE(XMLExternal Entity)指的是XML外部实体注入<br>XML用于标识电子文件使其具有结构性的标识语言，可以用来标记数据、定义数据类型，是一种允许用户对自己的标记语言进行定义的源语言。<br>XML文档结构包括XML声名、DTD文档类型定义、文档元素。</p>
+<h3 id="2、XXE攻击原理"><a href="#2、XXE攻击原理" class="headerlink" title="2、XXE攻击原理"></a>2、XXE攻击原理</h3><p>如果攻击者可以上传XML文档或者在XML文档中添加恶意内容，通过易受攻击的代码、依赖项或集成，他们就能够攻击合有缺陷的XML处理器。<br>XXE缺陷可用于提取数据、执行远程服务器请求、扫描内部系统、执行拒绝服务攻击和其他攻击。</p>
+<h3 id="3、防御XXE的方法"><a href="#3、防御XXE的方法" class="headerlink" title="3、防御XXE的方法"></a>3、防御XXE的方法</h3><p>尽可能使用简单的数据格式（如：JSON),避免对敏感数据进行序列化<br>禁止使用外部实体，例如llibxml disable_entity_loader(true)<br>过滤用户提交的XML数据，防止出现非法内容</p>
+<h2 id="五、失效的访问控制"><a href="#五、失效的访问控制" class="headerlink" title="五、失效的访问控制"></a>五、失效的访问控制</h2><h3 id="1、什么是失效的访问控制"><a href="#1、什么是失效的访问控制" class="headerlink" title="1、什么是失效的访问控制"></a>1、什么是失效的访问控制</h3><p>访问控制<br>即保护资源不被非法访问和使用，目前应用最多的是基于角色的访问控制机制。失效的访问控制就是攻击者通过各种手段提升自己的权限，越过访问控制，使访问控制失效。这样攻击者就可以冒充用户、管理员或拥有特权的用户，或者创建、访问、更新或删除任何记录。</p>
+<h3 id="2、失效的访问控制攻击原理"><a href="#2、失效的访问控制攻击原理" class="headerlink" title="2、失效的访问控制攻击原理"></a>2、失效的访问控制攻击原理</h3><p>攻击者通过修改URL、内部应用程序状态或HTML页面绕过访问控制检查，或简单地使用自定义的API攻击工具。<br>特权提升：在不登录的情况下假扮用户，或以用户身份登录时充当管理员<br>元数据操作；如重放或募改访问控制令牌，以此来修改cookie提升权限</p>
+<h3 id="3、防御失效的访问控制的方法"><a href="#3、防御失效的访问控制的方法" class="headerlink" title="3、防御失效的访问控制的方法"></a>3、防御失效的访问控制的方法</h3><p>除公有资源外，其他资源默认情况下拒绝访问<br>使用一次性的访问控制机制，并在整个应用程序中不断重用它们<br>建立访问控制模型以强制执行所有权记录，而不是接受用户创建、读取、更新或删除的任何记录当用户注销后，服务器上的JWT令牌应失效<br>常见失效场景<br>越权<br>水平越权<br>垂直越权<br>文件操作<br>文件上传<br>文件包含<br>任意文件下载<br>任意文件删除</p>
+<h2 id="六、安全配置错误"><a href="#六、安全配置错误" class="headerlink" title="六、安全配置错误"></a>六、安全配置错误</h2><h3 id="1、安全配置错误介绍"><a href="#1、安全配置错误介绍" class="headerlink" title="1、安全配置错误介绍"></a>1、安全配置错误介绍</h3><p>由于系统管理员的疏忽，可能会产生一些安全配置错误。安全配置错误可以发生在一个应用程序堆栈的任何层面，包括网络服务、平台、Web服务器、应用服务器、数据库、框架、自定义代码和预安装的虚拟机、容器和存储。可以使用自动扫描器来检测错误的安全配置、默认账户的使用或配置、不必要的服务、遗留选项等。</p>
+<h3 id="2、安全配置错误攻击原理"><a href="#2、安全配置错误攻击原理" class="headerlink" title="2、安全配置错误攻击原理"></a>2、安全配置错误攻击原理</h3><p>攻击者能够通过未修复的漏洞、访问默认账户，不再使用的页面、未受保护的文件和目录、开放的不必要的端口等来取得对系统的未授权的访问，安全配置错误比如如果由于管理员的疏忽，／etc／passwd文件具有777的访问权限，这样攻击者就可以在拿到普通用户的身份后通过修改该文件拿到root权限。</p>
+<h3 id="3、防御安全配置错误的方法"><a href="#3、防御安全配置错误的方法" class="headerlink" title="3、防御安全配置错误的方法"></a>3、防御安全配置错误的方法</h3><p>使用的服务不包含任何不必要的功能、组件、文档和示例。移除或不安装不适用的功能和框架<br>及时检测系统服务版本，为已发现的漏洞打补丁<br>在对文件等分配权限时，根据其工作需要采取最小权限原则的方法</p>
+<h2 id="七、跨站脚本（xss）"><a href="#七、跨站脚本（xss）" class="headerlink" title="七、跨站脚本（xss）"></a>七、跨站脚本（xss）</h2><h3 id="1、xss介绍"><a href="#1、xss介绍" class="headerlink" title="1、xss介绍"></a>1、xss介绍</h3><p>xss（cross-sitescripting），实际上应该是css，但是这与前端中的css重名，因此改名为xss，简称为跨站脚本攻击。这是一种针对网站的应用程序的安全漏洞攻击技术，是代码注入的一种。它允许用户将恶意代码注入网页，其他用户在访问时就会受到影响。恶意用户利用xss代码攻击成功后，可以进行重定向，获取cookie值等内容<br>反射型XSS<br>又称为非持久型XSS攻击者将带有恶意jS脚本的页面发送给目标用户，用户点击后就会触发XSS漏润，<br>服务器会向攻击者返回一个带有JS脚本运行果的页面，从而被盗取cookle值或者被重定向到第三方网站。XSS原理<br>存储型XSs<br>又称为持久性xss，攻击脚本将被存放到目标服务器的数据库或者文件中，具有提高的隐蔽性。当用户访问到脚本时，出发xss漏润。后面的流程跟反射型一样。<br>DOM型XSS<br>DOM型XSS实际上是一种特殊类型的反射型XSS，它是一种基于DOM文档对象模型的一种漏洞。攻击者向服务器一个带有恶意JS代码的请求，服务器的响应不会以任何形式包含攻击者的脚本。当用户的浏览器处理这个响应时，DOM对象就会处理XSS代码，导致存在XSS漏洞</p>
+<h3 id="2、防御XSS的方法"><a href="#2、防御XSS的方法" class="headerlink" title="2、防御XSS的方法"></a>2、防御XSS的方法</h3><p>对于献取cookie的XS5的防御可以在cookie上添加Httponly<br>过滤输入的数据<br>对输出数据进行html编码</p>
+<h2 id="八、不安全反序列"><a href="#八、不安全反序列" class="headerlink" title="八、不安全反序列"></a>八、不安全反序列</h2><h3 id="1、什么是序列化"><a href="#1、什么是序列化" class="headerlink" title="1、什么是序列化"></a>1、什么是序列化</h3><p>二维结构化的数据对象，变成无结构平面的字节顺序排列的序列，以便按顺序的一个一个在网络上进行传输或存储。这一过程我们把它叫做序列化。</p>
+<h3 id="2、什么是反序列化"><a href="#2、什么是反序列化" class="headerlink" title="2、什么是反序列化"></a>2、什么是反序列化</h3><p>反序列化和序列化是两个正好相反的过程。将平面序列化的数据恢复为原来二维结构化的数据对象。</p>
+<h3 id="3、反序列化有什么安全问题"><a href="#3、反序列化有什么安全问题" class="headerlink" title="3、反序列化有什么安全问题"></a>3、反序列化有什么安全问题</h3><p>尽管反序列化最严重可导致远程代码执行（RCE，Remote Code Execution），但最常见的反序列化安全问题却是通过修改序列化之后的数据字段，从而进行提权或越权操作。</p>
+<h3 id="4、反序列化攻击原理"><a href="#4、反序列化攻击原理" class="headerlink" title="4、反序列化攻击原理"></a>4、反序列化攻击原理</h3><p>序列化即是把对象转变为字节流，存放在内存、文件数据库中，而反序列化即是把字节流转变为对象。在java中有一个Objectoutputstream类的writeobject方法可以实现序列化，而ObjectinputStream类的Readobject方法可以实现反序列化。该漏洞的原因出自于如果应用对恶意构造的用户输入的数据进行反序列化，这样就会产生非预期的对象，从而有可能产生远程代码执行。或者应用中存在可以在反序列化过程中或者之后被改变行为的类，则攻击可以通过改变应用逻辑或者实现远程代码执行攻击。不安全的反序列化我们将其称为对象和数据结构攻击。</p>
+<h3 id="5、防御反序列化的方法"><a href="#5、防御反序列化的方法" class="headerlink" title="5、防御反序列化的方法"></a>5、防御反序列化的方法</h3><p>最安全的方法是不接受来自不受信源的序列化对象，或使用只允许原始数据类型的序列化媒体<br>反序列化之前，先进行严格的数据类型校验。由于校验规则容易被攻击者探索出来，进而容易被绕过，因此防御不能仅依赖这一个手段，但可以作为完整性校验防御方案的补充<br>隔离运行那些在低特权环境中反序列化的代码<br>对反序列化过程进行详尽的日志记录，监控反序列化过程，在发现疑似反序列化攻击时进行警报</p>
+<h2 id="九、使用含有已知漏洞的组件"><a href="#九、使用含有已知漏洞的组件" class="headerlink" title="九、使用含有已知漏洞的组件"></a>九、使用含有已知漏洞的组件</h2><h3 id="1、攻击原理"><a href="#1、攻击原理" class="headerlink" title="1、攻击原理"></a>1、攻击原理</h3><p>由于现在的服务器都需要使用很多的组件，管理员并不能保证所使用的组件都是最新的，因此可能会存在一些版本是存在已知漏洞的（实际上比较新的版本的组件也是会存在漏洞的），攻击者可以使用这些已知的漏洞来进行攻击，甚至获得管理员权限</p>
+<h3 id="2、防御方法"><a href="#2、防御方法" class="headerlink" title="2、防御方法"></a>2、防御方法</h3><p>移除不使用的依赖、不需要的功能、组件、文件和文档<br>从官方渠道安全的获取组件，并使用签名机制来降低组件被篡改或加入恶意漏洞的风险<br>关注最新的漏洞报告，及时为需要的组件进行升级或者打补丁</p>
+<h2 id="十、不足的日志记录和监控"><a href="#十、不足的日志记录和监控" class="headerlink" title="十、不足的日志记录和监控"></a>十、不足的日志记录和监控</h2><h3 id="1、日志记录介绍"><a href="#1、日志记录介绍" class="headerlink" title="1、日志记录介绍"></a>1、日志记录介绍</h3><p>日志记录是一个系统的最重要的功能之一。日志记录包括登录成功记录、登录失败记录、访问控制记录等，用来记录服务器的各种信息</p>
+<h3 id="2、攻击原理"><a href="#2、攻击原理" class="headerlink" title="2、攻击原理"></a>2、攻击原理</h3><p>攻击者依靠监控的不足和响应的不及时来达成他们的目标而不被知晓。 比如日志没有记录登录失败，那么攻击者可能就可以通过暴力破解多次进行登录尝试，但是日志中却没有记录。这就可能让攻击者成功入侵系统并隐匿自己的行踪。这个看似危害不大但却是十分严重的危害，因为一个日志系统不完善的服务器很容易遭受攻击并且在遭受攻击后无法判断攻击来源，10 这样就无法做出相应的防御，很可能再次遭受同样的攻击。；</p>
+<h3 id="3、防御方法"><a href="#3、防御方法" class="headerlink" title="3、防御方法"></a>3、防御方法</h3><p>确保所有登录、访问控制失败、输入验证失败能够被记录到日志中去，并保留足够的用户上下文信息，以识别可疑或恶意账户，并为后期取证预留足够时间<br>建立有效的监控和告警机制，使可疑活动在可接受的时间内被发现和应对<br>完善日志系统，使其可以监控各种日志信息<br>及时对日志系统进行备份，并保存足够长时间</p>
 
                 
             </div>
@@ -444,7 +470,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://github.com/yanshaoze/yanshaoze.github.io.git/2021/09/16/20210916/">https://github.com/yanshaoze/yanshaoze.github.io.git/2021/09/16/20210916/</a>
+                    <a href="https://github.com/yanshaoze/yanshaoze.github.io.git/2022/09/07/20220907/">https://github.com/yanshaoze/yanshaoze.github.io.git/2022/09/07/20220907/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -482,12 +508,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/java/">
-                                    <span class="chip bg-color">java</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96/">
-                                    <span class="chip bg-color">接口自动化</span>
+                                <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">
+                                    <span class="chip bg-color">渗透测试</span>
                                 </a>
                             
                         </div>
@@ -530,17 +552,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/09/17/20210917/">
+                <a href="/2022/09/07/20220907/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="拓展">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="渗透测试">
                         
-                        <span class="card-title">拓展</span>
+                        <span class="card-title">渗透测试</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -550,9 +573,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-07
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -561,15 +584,12 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
-                    </a>
-                    
-                    <a href="/tags/forest/">
-                        <span class="chip bg-color">forest</span>
+                    <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">
+                        <span class="chip bg-color">渗透测试</span>
                     </a>
                     
                 </div>
@@ -583,13 +603,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/09/15/20210915/">
+                <a href="/2021/10/16/20211016/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="接口测试">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="机器学习">
                         
-                        <span class="card-title">接口测试</span>
+                        <span class="card-title">机器学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -600,7 +620,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-16
                             </span>
                         <span class="publish-author">
                             
@@ -613,12 +633,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/">
-                        <span class="chip bg-color">接口测试</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
